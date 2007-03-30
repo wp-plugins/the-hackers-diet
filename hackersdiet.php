@@ -3,11 +3,11 @@
 Plugin Name: The Hacker's Diet
 Plugin URI: http://www.afex2win.com/stuff/hackersdiet/
 Description: Track your weight loss online via your blog.  Inspired by John Walker's <a href="http://www.fourmilab.ch/hackdiet/">The Hacker's Diet</a>.  This plugin replaces the Excel files supplied for his original system.
-Version: 0.9.2b
+Version: 0.9.4b
 Author: Keith 'afex' Thornhill
 Author URI: http://www.afex2win.com/
 */
-$hd_version = "0.9.2b";
+$hd_version = "0.9.4b";
 $hackdiet_user_level = 1;	// feel free to change this value (1-10) if you want to restrict lower users from using the plugin
 
 
@@ -229,7 +229,7 @@ function hackdiet_option_page() {
 					<td colspan="3" align="center">
 						<br>
 						<br>
-						<img id="main_graph" src="<?=PLUGIN_FOLDER_URL?>/hackersdiet_chart.php?user=<?=$user_ID?>&start_date=<?=$_GET['start_date']?>&end_date=<?=$_GET['end_date']?>&goal=<?=$options["goal_weight"]?>">
+						<img id="main_graph" src="<?=PLUGIN_FOLDER_URL?>/hackersdiet_chart.php?user=<?=$user_ID?>&start_date=<?=$_GET['start_date']?>&end_date=<?=$_GET['end_date']?>&goal=<?=$options["goal_weight"]?>&maint_mode=<?=$options["maint_mode"]?>">
 						<div id="blurb">
 						<?
 							include(dirname(__FILE__).'/ajax_blurb.php');
@@ -290,7 +290,7 @@ function hackdiet_option_page() {
 							include(dirname(__FILE__).'/ajax_togo.php');
 						?>
                         </div>
-						<img id="main_graph" src="<?=PLUGIN_FOLDER_URL?>/hackersdiet_chart.php?user=<?=$user_ID?>&weeks=2&goal=<?=$options["goal_weight"]?>">
+						<img id="main_graph" src="<?=PLUGIN_FOLDER_URL?>/hackersdiet_chart.php?user=<?=$user_ID?>&weeks=2&goal=<?=$options["goal_weight"]?>&maint_mode=<?=$options["maint_mode"]?>">
 						<br>
 					</td>
 				</tr>

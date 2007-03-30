@@ -18,6 +18,7 @@ $start_date = $_GET["start_date"];
 $end_date = $_GET["end_date"];
 $goal = $_GET["goal"];
 $user_id = $_GET["user"];
+$maint_mode = $_GET["maint_mode"];
 
 if ($weeks) {
 	$query = "select date, weight, trend from ".$table_prefix."hackdiet_weightlog where wp_id = $user_id and date > \"".date("Y-m-d", strtotime("$weeks weeks ago"))."\" order by date asc";
@@ -128,27 +129,49 @@ if ($weight_data) {
 
 $graph = new Graph(600,300,"auto");
 $graph->SetScale("textlin");
+$graph->legend->SetLayout(LEGEND_HOR);
+$graph->legend->Pos(0.5, 0.1, "center", "bottom");
 
 if ($x_data) {
 	$graph->xaxis->SetTickLabels($x_data); 
 }
 
-if ($goal > 0) {
-	$graph->yaxis->scale->SetAutoMin($lowest_weight - 1); 
-
-	$goalplot = new PlotLine (HORIZONTAL, $goal, "green" ,2); 
-	$graph->Add($goalplot);
-}
-
 if ($weight_data) {
 	$sp1 = new ScatterPlot($weight_data);
+    $sp1->SetLegend("Daily Weight");
 	$graph->Add($sp1);
 }
 
 if ($trend_data) {
 	$trendplot=new LinePlot($trend_data);
 	$trendplot->SetColor("red");
+    $trendplot->SetLegend("Trend");
 	$graph->Add($trendplot);
+}
+
+if ($goal > 0) {
+	$graph->yaxis->scale->SetAutoMin($lowest_weight - 1); 
+
+	$goalplot = new PlotLine (HORIZONTAL, $goal, "green" ,2);
+	$graph->Add($goalplot);
+
+    // PlotLine don't support SetLegend, so we fake it thusly
+	$fakegoal=new LinePlot($temp = 0);
+	$fakegoal->SetColor("green");
+    $fakegoal->SetLegend("Goal");
+    $graph->Add($fakegoal);
+
+    if ($maint_mode) {
+        $upperplot = new PlotLine (HORIZONTAL, $goal + 2.5, "blue" ,1); 
+        $graph->Add($upperplot);
+        $lowerplot = new PlotLine (HORIZONTAL, $goal - 2.5, "blue" ,1); 
+        $graph->Add($lowerplot);
+
+      	$bound=new LinePlot($temp = 0);
+        $bound->SetColor("blue");
+        $bound->SetLegend("Boundaries");
+        $graph->Add($bound);
+    }
 }
 
 $graph->Stroke();

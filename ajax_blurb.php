@@ -30,8 +30,9 @@ if ($stats) {
 	echo " - ";
 	echo "Daily ".($stats["daily_variance"] > 0?"excess":"deficit").": ".abs($stats["daily_variance"])." calories.";
 	echo "<br>";
-	if ($options["goal_weight"]) {
+	if (!$options["maint_mode"] && $options["goal_weight"]) {
 		if ($stats["on_target"]) {
+            // going good
 			echo "You will reach your goal of ".$options["goal_weight"]." ".$options["unit"]."s on ".$stats["new_date"].".";
 			if ($options["goal_date"]) {
 				$days_early = round((strtotime($options["goal_date"])-strtotime($stats["new_date"]))/60/60/24);
@@ -42,7 +43,8 @@ if ($stats) {
 					echo " (Exactly!)";
 				}
 			}
-		} else if (isset($stats["on_target"]) && $options["goal_date"]) {
+		} else if ($options["goal_date"]) {
+            // gaining weight and we have a point of reference
 			if ($stats["new_date"]) {
 				echo "You won't reach your goal of ".$options["goal_weight"]." ".$options["unit"]."s until ".date("F jS, Y", strtotime($stats["new_date"])).".";
 			} else {
@@ -53,7 +55,10 @@ if ($stats) {
 			if ($stats["new_date"]) {
 				echo ".. or just wait longer!";
 			}
-		}
+		} else {
+            // gaining weight in general
+            echo "Warning: You are moving away from your goal.  Change your daily excess into a deficit in order to get back on track!";
+        }
 	}
 }
 ?>
