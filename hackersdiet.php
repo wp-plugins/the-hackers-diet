@@ -185,7 +185,7 @@ function hackdiet_option_page() {
 			padding: 0 0 0 .6em;
 		}
 	</style>
-    <div id="file_path" style="display: none;"><?= preg_replace("/^(.*)\/wp-admin\/index\.php$/", "\\1/wp-content/plugins/hackersdiet/", $_SERVER["SCRIPT_NAME"]) ?></div>
+    <div id="file_path" style="display: none;"><?= preg_replace("/^(.*)\/wp-admin\/index\.php$/", "\\1/wp-content/plugins/hackersdiet/", $_SERVER["PHP_SELF"]) ?></div>
     <!--<div id="file_path" style="display: none;"><?= PLUGIN_FOLDER_URL ?></div>-->
     
 	<div class="wrap">
