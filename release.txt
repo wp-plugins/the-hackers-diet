@@ -15,6 +15,10 @@ Installation:
 
 Versions:
 ---------
+v0.9.4b
+---
+Added legend and boundary lines to weight chart
+
 v0.9.3b - 1/31/2007
 ---
 Changed use of SCRIPT_NAME server var to PHP_SELF in order to support PHP as CGI installs
