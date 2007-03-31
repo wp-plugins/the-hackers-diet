@@ -15,7 +15,7 @@ Installation:
 
 Versions:
 ---------
-v0.9.4b
+v0.9.4b - 4/1/2007
 ---
 Added legend and boundary lines to weight chart
 

@@ -3,13 +3,17 @@ Contributors: afex
 Tags: diet, weight loss
 Requires at least: 2.0.7
 Tested up to: 2.1
-Stable tag: 0.9.3b
+Stable tag: 0.9.4b
 
-Helps you track and predict weight loss using your blog.  Daily weight entry, trend calculations, and more.
+Helps you track and predict weight loss using your Wordpress blog.  Daily weight entry, trend calculations, and more.
 
 == Description ==
 
+Want to lose weight?  Need help?  Use Wordpress? (of course you do!)
 
+The Hacker's Diet is a simple way to count calories and track your weight to make sure you are really losing the pounds.  By calculating your average weight, you don't have to be scared of those days when you "gain" 2 pounds overnight.  You'll see exactly your rate of weight loss and be able to predict when you will hit your weight goal.
+
+This plugin serves to provide a web-based version of the Excel spreadsheets provided by the diet plan.  This lets you use the familiar interface of your blog to keep up-to-date on your diet.  After you hit your weight goal, it helps you maintain your weight by keeping you within a set window around your goal.
 
 == Installation ==
 

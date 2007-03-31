@@ -131,6 +131,7 @@ $graph = new Graph(600,300,"auto");
 $graph->SetScale("textlin");
 $graph->legend->SetLayout(LEGEND_HOR);
 $graph->legend->Pos(0.5, 0.1, "center", "bottom");
+$graph->SetClipping();
 
 if ($x_data) {
 	$graph->xaxis->SetTickLabels($x_data); 
@@ -162,10 +163,14 @@ if ($goal > 0) {
     $graph->Add($fakegoal);
 
     if ($maint_mode) {
-        $upperplot = new PlotLine (HORIZONTAL, $goal + 2.5, "blue" ,1); 
-        $graph->Add($upperplot);
-        $lowerplot = new PlotLine (HORIZONTAL, $goal - 2.5, "blue" ,1); 
-        $graph->Add($lowerplot);
+		if ($graph->yscale->autoscale_max == null || $graph->yscale->autoscale_max > $goal + 2) {
+	        $upperplot = new PlotLine (HORIZONTAL, $goal + 2.5, "blue", 1);
+	        $graph->AddLine($upperplot);			
+		}
+		if ($graph->yscale->autoscale_min == null || $graph->yscale->autoscale_min < $goal - 2) {
+	        $lowerplot = new PlotLine (HORIZONTAL, $goal - 2.5, "blue", 1); 
+	        $graph->AddLine($lowerplot);
+		}
 
       	$bound=new LinePlot($temp = 0);
         $bound->SetColor("blue");
