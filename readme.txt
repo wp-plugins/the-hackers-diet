@@ -27,6 +27,10 @@ This plugin serves to provide a web-based version of the Excel spreadsheets prov
 
 Nope.  If you skip a day (or 6) your trend will just be calculated based off whenever your last weigh-in was.  Obviously, weighing yourself everyday will give you the most accurate trend.
 
+= Can multiple users log their weights? =
+
+Yes! Weight entries are saved per user, so anybody that has access to your blog's dashboard can log their weights.  Note: edit the `$hackdiet_user_level` variable at the top of `hackersdiet.php` to restrict access.
+
 = What does the sidebar widget do? =
 
 Nothing yet.  Got a good idea?  Let me know.
