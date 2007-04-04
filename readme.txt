@@ -2,8 +2,8 @@
 Contributors: afex
 Tags: diet, weight loss
 Requires at least: 2.0.7
-Tested up to: 2.1
-Stable tag: 0.9.4b
+Tested up to: 2.1.3
+Stable tag: 0.9.5b
 
 Helps you track and predict weight loss using your Wordpress blog.  Daily weight entry, trend calculations, and more.
 
@@ -17,7 +17,7 @@ This plugin serves to provide a web-based version of the Excel spreadsheets prov
 
 == Installation ==
 
-1. Extract and upload the contents of the zip file to the `/wp-content/plugins/` directory
+1. Extract and upload the contents of the zip file to the `/wp-content/plugins/hackersdiet` directory, making sure that `hackersdiet.php` resides in that directory, not a subdirectory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Click the menu link on the Dashboard home page
 

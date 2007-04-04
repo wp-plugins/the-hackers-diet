@@ -1,4 +1,4 @@
-The Hacker's Diet - A wordpress Plugin
+The Hacker's Diet - A Wordpress Plugin
 Written By: Keith 'afex' Thornhill - www.afex2win.com
 
 
@@ -6,7 +6,7 @@ Installation:
 -------------
 
 1. Unzip
-2. Upload (wp-content/plugins)
+2. Upload (wp-content/plugins/hackersdiet)
 3. Activate
 4. Lose Weight
 5. ???
@@ -15,6 +15,10 @@ Installation:
 
 Versions:
 ---------
+v0.9.5b - 4/3/2007
+---
+Updated installation instructions to specify plugin directory name.  Hopefully this limitation can be worked around in a future version.
+
 v0.9.4b - 4/1/2007
 ---
 Added legend and boundary lines to weight chart
