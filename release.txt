@@ -6,7 +6,7 @@ Installation:
 -------------
 
 1. Unzip
-2. Upload (wp-content/plugins/hackersdiet)
+2. Upload (wp-content/plugins)
 3. Activate
 4. Lose Weight
 5. ???
@@ -15,6 +15,10 @@ Installation:
 
 Versions:
 ---------
+v0.9.6b - 4/4/2007
+---
+Figured out how to activate and reference paths in a general way so plugin directory name can be arbitrary.
+
 v0.9.5b - 4/3/2007
 ---
 Updated installation instructions to specify plugin directory name.  Hopefully this limitation can be worked around in a future version.

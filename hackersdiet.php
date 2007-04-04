@@ -3,16 +3,17 @@
 Plugin Name: The Hacker's Diet
 Plugin URI: http://www.afex2win.com/stuff/hackersdiet/
 Description: Track your weight loss online via your blog.  Inspired by John Walker's <a href="http://www.fourmilab.ch/hackdiet/">The Hacker's Diet</a>.  This plugin replaces the Excel files supplied for his original system.
-Version: 0.9.5b
+Version: 0.9.6b
 Author: Keith 'afex' Thornhill
 Author URI: http://www.afex2win.com/
 */
-$hd_version = "0.9.5b";
+$hd_version = "0.9.6b";
 $hackdiet_user_level = 1;	// feel free to change this value (1-10) if you want to restrict lower users from using the plugin
 
-
-define("PLUGIN_FOLDER_URL", get_bloginfo('wpurl') . "/wp-content/plugins/hackersdiet");
-
+// find URI to plugin dir so ajax calls have correct path
+preg_match("/.*(\/wp-content\/plugins\/.*)\/hackersdiet.php$/", __FILE__, $hd_matches);
+define("PLUGIN_FOLDER_URL", get_bloginfo('wpurl') . $hd_matches[1]);
+define("PLUGIN_PATH", parse_url(PLUGIN_FOLDER_URL, PHP_URL_PATH) . "/");
 require_once(dirname(__FILE__).'/hackersdiet_lib.php');
 
 function hackdiet_install() {
@@ -185,8 +186,8 @@ function hackdiet_option_page() {
 			padding: 0 0 0 .6em;
 		}
 	</style>
-    <div id="file_path" style="display: none;"><?= preg_replace("/^(.*)\/wp-admin\/index\.php$/", "\\1/wp-content/plugins/hackersdiet/", $_SERVER["PHP_SELF"]) ?></div>
-    <!--<div id="file_path" style="display: none;"><?= PLUGIN_FOLDER_URL ?></div>-->
+	
+	<div id="file_path" style="display: none;"><?= PLUGIN_PATH ?></div>
     
 	<div class="wrap">
 		<h2 id="write-post">The Hacker's Diet</h2>
@@ -443,9 +444,9 @@ function hackdiet_widget_init() {
 
 // hooks
 add_action('admin_menu',                           'hackdiet_add_dashboard_page');
-add_action('activate_hackersdiet/hackersdiet.php', 'hackdiet_install');
+//add_action('activate_hackersdiet/hackersdiet.php', 'hackdiet_install');
 add_action('admin_head',                           'hackdiet_js');
-
 add_action('widgets_init',                         'hackdiet_widget_init');
 
+register_activation_hook(__FILE__, 'hackdiet_install');
 ?>
