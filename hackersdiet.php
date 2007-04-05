@@ -444,7 +444,6 @@ function hackdiet_widget_init() {
 
 // hooks
 add_action('admin_menu',                           'hackdiet_add_dashboard_page');
-//add_action('activate_hackersdiet/hackersdiet.php', 'hackdiet_install');
 add_action('admin_head',                           'hackdiet_js');
 add_action('widgets_init',                         'hackdiet_widget_init');
 
