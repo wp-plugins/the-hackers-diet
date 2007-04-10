@@ -35,6 +35,10 @@ Yes! Weight entries are saved per user, so anybody that has access to your blog'
 
 Nothing yet.  Got a good idea?  Let me know.
 
+= Why isn't the plugin version 1.0 yet? =
+
+I don't consider my plugin complete until I have a story in place for viewing and editing historical weight entries.  Once I have that, I can consider it "feature complete".
+
 == Screenshots ==
 
 1. Dashboard integration
