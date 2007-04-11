@@ -13,7 +13,8 @@ $hackdiet_user_level = 1;	// feel free to change this value (1-10) if you want t
 // find URI to plugin dir so ajax calls have correct path
 preg_match("/.*(\/wp-content\/plugins\/.*)\/hackersdiet.php$/", __FILE__, $hd_matches);
 define("PLUGIN_FOLDER_URL", get_bloginfo('wpurl') . $hd_matches[1]);
-define("PLUGIN_PATH", parse_url(PLUGIN_FOLDER_URL, PHP_URL_PATH) . "/");
+$hd_parsed_url = parse_url(PLUGIN_FOLDER_URL);
+define("PLUGIN_PATH",  $hd_parsed_url['path'] . "/");
 require_once(dirname(__FILE__).'/hackersdiet_lib.php');
 
 function hackdiet_install() {
