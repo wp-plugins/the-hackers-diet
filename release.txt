@@ -15,7 +15,7 @@ Installation:
 
 Versions:
 ---------
-v0.9.6b - 4/4/2007
+v0.9.6b - 4/10/2007
 ---
 Figured out how to activate and reference paths in a general way so plugin directory name can be arbitrary.
 
