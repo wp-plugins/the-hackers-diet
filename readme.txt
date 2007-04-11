@@ -3,7 +3,7 @@ Contributors: afex
 Tags: diet, weight loss
 Requires at least: 2.0.7
 Tested up to: 2.1.3
-Stable tag: 0.9.5b
+Stable tag: 0.9.6b
 
 Helps you track and predict weight loss using your Wordpress blog.  Daily weight entry, trend calculations, and more.
 
