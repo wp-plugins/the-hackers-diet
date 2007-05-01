@@ -3,11 +3,11 @@
 Plugin Name: The Hacker's Diet
 Plugin URI: http://www.afex2win.com/stuff/hackersdiet/
 Description: Track your weight loss online via your blog.  Inspired by John Walker's <a href="http://www.fourmilab.ch/hackdiet/">The Hacker's Diet</a>.  This plugin replaces the Excel files supplied for his original system.
-Version: 0.9.6b
+Version: 0.9.7b
 Author: Keith 'afex' Thornhill
 Author URI: http://www.afex2win.com/
 */
-$hd_version = "0.9.6b";
+$hd_version = "0.9.7b";
 $hackdiet_user_level = 1;	// feel free to change this value (1-10) if you want to restrict lower users from using the plugin
 
 // find URI to plugin dir so ajax calls have correct path
