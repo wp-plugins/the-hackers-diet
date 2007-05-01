@@ -241,6 +241,16 @@ function hackdiet_option_page() {
 				</tr>
 			</table>
 			<?
+			
+  	} else if ($_GET["section"] == "edit") {
+      /*********************************************
+      *                                            *
+      *                                            *
+      *                 EDIT SCREEN                *
+      *                                            *
+      *                                            *
+      *********************************************/
+      echo "Edit screen not yet implemented... it's next on my list, I promise! :]";
 		} else {
 			/**********************************************
 			*                                             *
@@ -325,6 +335,12 @@ function hackdiet_option_page() {
 								</ul>
 							</div>
 							<div>
+							  <h3><?php _e('Actions') ?></h3>
+							  <ul>
+							    <li><a href="<?= $_SERVER['PHP_SELF']."?page=hackersdiet.php&section=edit" ?>">Edit older weights</a></li>
+							  </ul>
+							</div>
+							<div>
 								<h3><?php _e('Updates'); ?></h3>
 								<?
 									if ( file_exists(ABSPATH . WPINC . '/rss.php') )
@@ -372,10 +388,10 @@ function hackdiet_option_page() {
 										<td><input type="text" id="goal_weight" name="goal_weight" value="<?=$options["goal_weight"]?>"></td>
                                         <td>Maintenance mode?</td>
                                         <td>
-                                            <input type="checkbox" id="maint_mode" name="maint_mode" <?= ($options["maint_mode"]?"checked":"") ?>><br />
+                                            <input type="checkbox" id="maint_mode" name="maint_mode" <?= ($options["maint_mode"]?"checked":"") ?>>
                                             <?
                                             if ($options["goal_weight"] && $current_trend <= $options["goal_weight"] && !$options["maint_mode"]) {
-                                                echo "<span class=\"bad_trend\">Just hit your goal? Select Maintenance mode.</span>";
+                                                echo "<span class=\"bad_trend\">Just hit your goal?<br/>Select Maintenance mode.</span>";
                                             }
                                             ?>
                                         </td>

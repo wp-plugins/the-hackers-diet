@@ -10,7 +10,11 @@ if (!$wpdb) {
 	mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
 	mysql_select_db(DB_NAME);
 
-	$user_id = $_POST["user"];
+	if (is_numeric($_POST['user'])) {
+    	$user_id = $_POST["user"];   
+    } else {
+        exit;
+    }
 } else {
 	$user_id = $user_ID;
 }

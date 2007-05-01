@@ -11,7 +11,7 @@ if (isset($_POST["id"]) && isset($_POST["user"]) && is_numeric($_POST["user"]) &
 	$user_id = $_POST["user"];
 	$weight = round($_POST["content"], 1);
 } else {
-	print_r($_POST);
+	//print_r($_POST);
 	echo "Please enter a valid number for your weight.";
 	exit;
 }
