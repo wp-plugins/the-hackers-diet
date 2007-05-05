@@ -13,7 +13,7 @@ eval($html);
 mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysql_select_db(DB_NAME);
 
-if (!is_numeric($_GET["user"]) || !is_numeric($_GET["weeks"])) {
+if (!is_numeric($_GET["user"]) || (isset($_GET['weeks']) && !is_numeric($_GET["weeks"]))) {
   exit;
 }
 
@@ -27,7 +27,7 @@ $maint_mode = $_GET["maint_mode"];
 if ($weeks) {
 	$query = "select date, weight, trend from ".$table_prefix."hackdiet_weightlog where wp_id = \"" . $user_id . "\" and date > \"".date("Y-m-d", strtotime("$weeks weeks ago"))."\" order by date asc";
 } else if ($start_date and $end_date) {
-	$query = "select date, weight, trend from ".$table_prefix."hackdiet_weightlog where wp_id = \"" . $user_id . "\" and date >= \"$start_date\" and date <= \"$end_date\" order by date asc";
+	$query = "select date, weight, trend from ".$table_prefix."hackdiet_weightlog where wp_id = \"" . $user_id . "\" and date >= \"".date("Y-m-d", strtotime($start_date))."\" and date <= \"".date("Y-m-d", strtotime($end_date))."\" order by date asc";
 }
 
 $result = mysql_query($query);
