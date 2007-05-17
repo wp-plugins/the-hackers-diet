@@ -2,7 +2,7 @@
 Contributors: afex
 Tags: diet, weight loss, graph, chart
 Requires at least: 2.0.7
-Tested up to: 2.1.3
+Tested up to: 2.2
 Stable tag: 0.9.8b
 
 Helps you track and predict weight loss using your Wordpress blog.  Daily weight entry, trend calculations, and more.
