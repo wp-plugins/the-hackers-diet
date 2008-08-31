@@ -1,0 +1,137 @@
+.hd_header_box {
+    float: left;
+    padding: 5px;
+    background: #cccccc;
+    width: 250px;
+    margin: 10px 35px;
+    height: 100px;
+    position: relative;
+}
+
+.hd_header_box .hd_header_number {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.hd_header_box_content {
+    position: relative;
+    top: 0;
+    height: 100px;
+}
+
+.hd_header_box_footnote {
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    font-size: 0.75em;
+}
+
+#hd_header_container {
+    float:left;
+    width: 974px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#hd_chart {
+    float: left;
+    clear: both;
+    margin-bottom: 10px;
+    width: 974px;
+}
+
+#hd_chart_container {
+    height: 300px;
+}
+
+.hd_chart_options {
+    overflow: hidden;
+    display: none; 
+    height: 0px;
+}
+
+#hd_chart_types {
+    margin: 0px auto;
+    width: 20em;
+}
+
+#hd_settings {
+    float: left;
+    clear: right;
+    width: 539px;
+}
+
+.hd_weight_summary {
+    float: left;
+    clear: both;
+    width: 954px;
+    color: white;
+    margin: 5px 10px;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+#hd_weight_summary_good {
+    background: #009900;
+}
+
+#hd_weight_summary_bad {
+    background: #dd0000;
+}
+
+.hd_rss_container {
+    clear: left;
+    border: 1px solid #cccccc;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding: 2px;
+    height: 27em;
+    overflow-x: auto;
+    overflow-y: auto;
+    font-size: 11px;
+    width: 400px;
+}
+
+.hd_rss_title {
+    display: block;
+    font-size: 1.17em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-right: 0pt;
+    margin-bottom: 1em;
+    margin-left: 0pt;
+    background-color: #eaf3fa;
+    margin-top: 0pt;
+    margin-right: 0pt;
+    margin-bottom: 0pt;
+    margin-left: 0pt;
+    padding-top: 0pt;
+    padding-right: 7px;
+    padding-bottom: 0pt;
+    padding-left: 7px;
+    font-size: 14px;
+    line-height: 2;
+}
+
+h3.hd_rss_title span {
+	display: block;
+	text-align: left;
+	float: left;
+}
+
+h3.hd_rss_title small {
+	display: block;
+	text-align: right;
+	float: right;
+	font-size: 75%;
+	line-height: 2.67; /* math: it works, bitches */
+}
+
+h3.hd_rss_title img.rss-icon {
+	vertical-align: middle;
+	margin: .5em 0;
+}

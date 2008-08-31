@@ -1,13 +1,32 @@
 <?
 function convert_weights($old_unit, $new_unit) {
+    global $table_prefix;
 	// this function will take all weights in the system and convert them to the new units as well as recalculating the trend
-
+	
+	$conv_factor = array();
+    $conv_factor['lb']['kg'] = (1 / 2.205);
+    $conv_factor['kg']['lb'] = 2.205;
+    
+    $conv_factor['lb']['st'] = (1 / 14);
+    $conv_factor['st']['lb'] = 14;
+    
+    $conv_factor['kg']['st'] = (1 / 6.35);
+    $conv_factor['st']['kg'] = 6.35;
+    
+    // an alternative which seems more accurate (but more code) is to convert just the weights and recalc the trends
+    // not sure if the result would be the same as this tho, in which case less code is better for now
+    $query = "UPDATE ".$table_prefix."hackdiet_weightlog SET weight = round(weight * ".$conv_factor[$old_unit][$new_unit].", 1), trend = round(trend * ".$conv_factor[$old_unit][$new_unit].", 1)";
+    mysql_query($query);
+    $query = "UPDATE ".$table_prefix."hackdiet_settings SET value = round(value * ".$conv_factor[$old_unit][$new_unit].") WHERE name = 'goal_weight'";
+    mysql_query($query);
 }
 
 function calories_per_unit($unit) {
 	switch($unit) {
 		case "kg":
-			return round(3500 * 0.45359237);
+			return round(3500 * 2.205);
+		case "st":
+		    return round(3500 * 14);
 		case "lb":
 		default:
 			return 3500;

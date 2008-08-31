@@ -21,7 +21,9 @@ if (!$wpdb) {
 
 require_once(dirname(__FILE__).'/hackersdiet_lib.php');
 
-$options = hackdiet_get_options($user_id);
+if (!$options) {
+    $options = hackdiet_get_options($user_id);
+}
 
 if ($_GET["start_date"] and $_GET["end_date"]) {
 	$stats = generate_stats($user_id, $_GET["start_date"], $_GET["end_date"], $options["unit"], $options["goal_weight"], $options["goal_date"]);

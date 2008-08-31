@@ -6,12 +6,12 @@ $html = str_replace ("<?php", "", $html);
 $html = str_replace ("?>", "", $html);
 eval($html);
 
-if (isset($_POST["id"]) && isset($_POST["user"]) && is_numeric($_POST["user"]) && isset($_POST["content"]) && is_numeric($_POST["content"])) {
-	$date = substr($_POST["id"], 7);
+if (isset($_POST["date"]) && isset($_POST["user"]) && is_numeric($_POST["user"]) && isset($_POST["weight"]) && is_numeric($_POST["weight"])) {
+	$date = strtotime($_POST["date"]);
 	$user_id = $_POST["user"];
-	$weight = round($_POST["content"], 1);
+	$weight = round($_POST["weight"], 1);
 } else {
-	//print_r($_POST);
+	header('HTTP/1.0 400 Bad Request');
 	echo "Please enter a valid number for your weight.";
 	exit;
 }
@@ -26,13 +26,14 @@ if (mysql_affected_rows() != 1) {
 	$query = "insert into ".$table_prefix."hackdiet_weightlog set date = \"".date("Y-m-d", $date)."\", weight = $weight, wp_id = $user_id";
 	mysql_query($query);
 	if (mysql_affected_rows() != 1) {
+	    header('HTTP/1.0 500 Internal Server Error');
 		echo "Save failed. - " . mysql_error();
 		exit();
 	} else {
-		echo htmlspecialchars($weight);
+		//echo htmlspecialchars($weight);
 	}
 } else {
-	echo htmlspecialchars($weight);
+	//echo htmlspecialchars($weight);
 }
 
 $query = "select trend from ".$table_prefix."hackdiet_weightlog where wp_id = $user_id and date < \"".date("Y-m-d", $date)."\" order by date desc limit 1";
@@ -67,5 +68,15 @@ foreach ($weights as $entry) {
 // 0 will always be the edited date, since the list contains the edited entry + all the ones after it, sorted asc.
 $dif = round($weights[0]["weight"] - $weights[0]["trend"], 1);
 
-echo "<span class=\"trend_dif ".(($dif < 0)?"good_trend":"bad_trend")."\">$dif</span>";
+// calculate this week's gain/loss
+$change = null;
+$query = "SELECT trend FROM ${table_prefix}hackdiet_weightlog WHERE wp_id = $user_id AND date <= '".date('Y-m-d', strtotime('1 week ago'))."' ORDER BY date DESC LIMIT 1";
+$res = mysql_query($query);
+$row = mysql_fetch_assoc($res);
+if ($row) {
+    $change = round($weights[0]['trend'] - $row['trend'], 2);
+}
+
+echo json_encode(array('weight' => $weights[0]['weight'], 'trend' => $weights[0]['trend'], 'change' => $change));
+//echo "<span class=\"trend_dif ".(($dif < 0)?"good_trend":"bad_trend")."\">$dif</span>";
 ?>
