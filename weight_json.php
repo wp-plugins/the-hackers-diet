@@ -1,6 +1,6 @@
 <?php
 // get our db settings without loading all of wordpress every save
-$html = implode('', file("../../../wp-config.php"));
+$html = implode('', file(str_replace('wp-content/plugins/hackersdiet/weight_json.php', 'wp-config.php', $_SERVER['SCRIPT_FILENAME'])));
 $html = str_replace ("require_once", "// ", $html);
 $html = str_replace ("<?php", "", $html);
 $html = str_replace ("?>", "", $html);

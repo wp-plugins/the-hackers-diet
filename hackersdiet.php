@@ -11,8 +11,7 @@ $hd_version = "1.0.0";
 $hackdiet_user_level = 1;	// feel free to change this value (1-10) if you want to restrict lower users from using the plugin
 
 // find URI to plugin dir so ajax calls have correct path
-preg_match("/.*(\/wp-content\/plugins\/.*)\/hackersdiet.php$/", __FILE__, $hd_matches);
-define("PLUGIN_FOLDER_URL", get_bloginfo('wpurl') . $hd_matches[1]);
+define("PLUGIN_FOLDER_URL", get_bloginfo('wpurl') . '/wp-content/plugins/' . str_replace('/hackersdiet.php', '', $plugin));
 $hd_parsed_url = parse_url(PLUGIN_FOLDER_URL);
 define("PLUGIN_PATH",  $hd_parsed_url['path'] . "/");
 require_once(dirname(__FILE__).'/hackersdiet_lib.php');
